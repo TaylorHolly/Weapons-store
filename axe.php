@@ -36,10 +36,8 @@ $axe_weapon_query = mysqli_query($con, $axe_weapon_query);
 
 <main>
 
-    <?php
-                    /*PUT STUFF HERE*/
-    echo "<p> Weapon:
-    ?>
+    ---
+
 </main>
 </body>
 </html>
