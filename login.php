@@ -5,7 +5,7 @@
 <head>
     <title> --SHOP NAME--</title>
     <meta charset="utf-8">
-    <link rel='stylesheet' type='text/css' herf='Stylesheet.css'>
+    <link rel='stylesheet' type='text/css' href='Stylesheet.css'>
 </head>
 
 <body>

@@ -49,6 +49,7 @@ $this_weapon_record = mysqli_fetch_assoc($this_weapon_result);
 
     PUT STUFF HERE
     <li> <a href='axe.php'> AXE </a></li>
+    <li> <a href='update_store.php'> UPDATE STORE </a> </li>
 
 </main>
 </body>
