@@ -52,7 +52,7 @@ $this_weapon_record = mysqli_fetch_assoc($this_weapon_result);
 
     <form action="" method="post">
         <input type="text" name='search'>
-        <input type="submit" name="submit" value="Search">
+        <input type="submit" name="submit" value="search">
     </form>
 
     <?php
@@ -68,15 +68,17 @@ $this_weapon_record = mysqli_fetch_assoc($this_weapon_result);
             echo "<br>";
 
         }else{
-            While ($row = mysqli_fetch_array($query)) {
+            while ($row = mysqli_fetch_array($query)) {
                 echo "<p>", $row ['Weapon_Name'];
                 echo "<br>";
             }
         }
+        mysqli_data_seek($query, 0);
     }
     ?>
 
     <!--Filter Weapons-->
+
     <h2>Filter Weapons</h2>
 
     <form action="" method="post">
@@ -88,16 +90,24 @@ $this_weapon_record = mysqli_fetch_assoc($this_weapon_result);
     </form>
 
     <?php
-    if(isset($_POST['LtH'])) {
-        $filter = $_POST['LtH'];
+    $count = 0;
+    if(isset($_POST['filter_options'])) {
+        echo "hi";
+        $filter = $_POST['filter_options'];
+
         $query2 = "SELECT Weapon_Name, Price FROM weapons ORDER BY Price ASC";
         $LtH_query = mysqli_query($con, $query2);
         $count = mysqli_num_rows($LtH_query);
 
-        While ($row = mysqli_fetch_array($LtH_query)) {
-            echo "<p>", ['Weapon_Name'];
-            echo "<p>", ['Price'];
-            echo "<br>";
+        if ($count > 0) {
+
+
+            echo $count;
+            while ($row = mysqli_fetch_array($LtH_query)) {
+                echo "<p>", $row ['Weapon_Name'];
+                echo "<p>", $row ['Price'];
+                echo "<br>";
+            }
         }
     }
     ?>
