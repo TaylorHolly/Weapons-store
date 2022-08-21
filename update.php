@@ -7,7 +7,7 @@ else{
     echo "connected to database";
 }
 
-$update_weapon = "UPDATE weapons SET Weapon_ID='$_POST[Weapon_ID]', Weapon_Name='$_POST[Weapon_Name]', Type_ID='$_POST[Weapon_Type]', Age='$_POST[Age]', Stock='$_POST[Stock]', Price='$_POST[Price]',";
+$update_weapon = "UPDATE weapons SET Weapon_ID='$_POST[Weapon_ID]', Weapon_Name='$_POST[Weapon_Name]', Type_ID='$_POST[Weapon_Type]', Age='$_POST[Age]', Stock='$_POST[Stock]', Price='$_POST[Price]' WHERE Weapon_ID='$_POST[Weapon_ID]'";
 
 if(!mysqli_query($con, $update_weapon)) {
     echo 'Update Failed';

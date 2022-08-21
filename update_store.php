@@ -61,7 +61,7 @@ $update_store_record = mysqli_query($con, $update_store)
         echo "<tr><form action='update.php' method='post'>";
         echo "<td><input type='text' name='Weapon ID' value='" .$row['Weapon_ID']. "'> </td>";
         echo "<td><input type='text' name='Weapon Name' value='" .$row['Weapon_Name']. "'> </td>";
-        echo "<td><input type='text' name='Weapon Type' value='" .$row['Weapon_Type']. "'> </td>";
+        echo "<td><input type='text' name='Weapon Type' value='" .$row['Type_ID']. "'> </td>";
         echo "<td><input type='text' name='Age' value='" .$row['Age']. "'> </td>";
         echo "<td><input type='text' name='Stock' value='" .$row['Stock']. "'> </td>";
         echo "<td><input type='text' name='Price' value='" .$row['Price']. "'> </td>";

@@ -8,8 +8,9 @@ else{
 }
 
 /*Queries*/
-$axe_weapon_query = "SELECT Weapon_Name, Age, Price, Stock, Type_ID, Weapon_Img FROM weapons WHERE Weapon_ID = 'AXE'";
-$axe_weapon_query = mysqli_query($con, $axe_weapon_query);
+$weapon_query = "SELECT Weapon_Name, Age, Price, Stock, Type_ID, Weapon_Img FROM weapons WHERE Weapon_ID = 'AXE'";
+$weapon_result = mysqli_query($con, $weapon_query);
+$weapon_record = mysqli_fetch_assoc($weapon_result);
 ?>
 
 <!DOCTYPE html>
@@ -36,7 +37,13 @@ $axe_weapon_query = mysqli_query($con, $axe_weapon_query);
 
 <main>
 
-    ---
+    <?php
+        echo " " . $weapon_record['Weapon_Name'] . " Information: <br>";
+        echo "<p> Age Requirement: " .$weapon_record['Age'] . "<br>";
+        echo "<p> Price: " .$weapon_record['Price'] . "<br>";
+        echo "<p> Handedness: " .$weapon_record['Type_ID'] . "<br>";
+        echo "<p> Stock: " .$weapon_record['Stock'] . "<br>";
+    ?>
 
 </main>
 </body>
