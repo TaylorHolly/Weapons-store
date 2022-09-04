@@ -7,14 +7,30 @@ else{
     echo "connected to database";
 }
 
-$Weapon_ID = $_POST['weapon_id'];
+function terminate_script() {
+    header("refresh:2; url=store.php");
+    exit();
+}
+
 $Weapon_Name = $_POST['weapon'];
 $Type_ID = $_POST['ID'];
 $Age = $_POST['Age'];
 $Stock = $_POST['Stock'];
 $Price = $_POST['price'];
 
-$insert_weapon = "INSERT INTO weapons (Weapon_ID, Weapon_Name, Type_ID, Age, Stock, Price) VALUES ('$Weapon_ID', '$Weapon_Name', '$Type_ID', '$Age', '$Stock', '$Price')";
+/*Checking the price*/
+
+if (!empty($Price)) {
+    $number = filter_var($Price, FILTER_VALIDATE_INT);
+
+    if ($number === false or $Price < 0) {
+        echo 'Invalid Integer';
+        terminate_script();
+
+    }
+}
+
+$insert_weapon = "INSERT INTO weapons (Weapon_Name, Type_ID, Age, Stock, Price) VALUES ('$Weapon_Name', '$Type_ID', '$Age', '$Stock', '$Price')";
 
 /*Check the data has been added*/
 if(!mysqli_query($con, $insert_weapon)) {
