@@ -1,10 +1,10 @@
 <?php
+session_start();
 $con = mysqli_connect("localhost", "taylorho", "wildbean44", "taylorho_weapon");
+include 'connection.php';
 
-if(mysqli_connect_errno()){
-    echo "Failed to connect to MySQL:".mysqli_connect_error(); die();}
-else{
-    echo "connected to database";
+if((!isset($_SESSION['logged_in'])) or $_SESSION['logged_in'] !=1){
+    header("Location: error_page.php");
 }
 
 /*Queries*/
@@ -47,7 +47,7 @@ $weapon_record = mysqli_fetch_assoc($weapon_result);
             echo "<p> Handedness: One Handed <br>";
         }
 
-        echo "<p> Stock: " .$weapon_record['Stock'] . "<br>";
+        echo "<p> In Stock: " .$weapon_record['Stock'] . "<br>";
     ?>
 
 </main>

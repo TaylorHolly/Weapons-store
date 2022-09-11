@@ -1,11 +1,6 @@
 <?php
 $con = mysqli_connect("localhost", "taylorho", "wildbean44", "taylorho_weapon");
-
-if(mysqli_connect_errno()){
-    echo "Failed to connect to MySQL:".mysqli_connect_error(); die();}
-else{
-    echo "connected to database";
-}
+include 'connection.php';
 
 /*Queries*/
 
@@ -33,6 +28,10 @@ $this_weapon_record = mysqli_fetch_assoc($this_weapon_result);
     </head>
 
 <body>
+<div class="grid-container">
+
+    <div class="grid-item grid-item-1">
+
     <header>
         SHOP NAME
         <nav>
@@ -44,9 +43,10 @@ $this_weapon_record = mysqli_fetch_assoc($this_weapon_result);
             </ul>
         </nav>
     </header>
+    </div>
 
 <main>
-
+    <div class="grid-item grid-item-2">
     <!-- Search Weapons Form -->
     <h2>Search Weapons:</h2>
 
@@ -76,7 +76,9 @@ $this_weapon_record = mysqli_fetch_assoc($this_weapon_result);
         mysqli_data_seek($query, 0);
     }
     ?>
+    </div>
 
+    <div class="grid-item grid-item-3">
     <!--Filter Weapons-->
 
     <h2>Filter Weapons</h2>
@@ -111,9 +113,14 @@ $this_weapon_record = mysqli_fetch_assoc($this_weapon_result);
         }
     }
     ?>
+    </div>
 
-    <li> <a href='axe.php'> AXE </a></li>
-    <li> <a href='update_store.php'> UPDATE STORE </a> </li>
+    <div class="grid-item grid-item-4">
+        <li> <a href='axe.php'> AXE </a></li>
+    </div>
+        <li> <a href='update_store.php'> UPDATE STORE </a> </li>
+
+</div>
 
 </main>
 </body>
