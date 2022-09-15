@@ -6,7 +6,7 @@ include 'connection.php';
 $user = trim($_POST['username']);
 $pass = trim($_POST['password']);
 
-$login_query = "SELECT password FROM users WHERE Username ='".   $user."'";
+$login_query = "SELECT password FROM customers WHERE Username ='".   $user."'";
 $login_result = mysqli_query($con, $login_query);
 $login_record = mysqli_fetch_assoc($login_result);
 
