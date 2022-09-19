@@ -21,21 +21,15 @@ $this_weapon_record = mysqli_fetch_assoc($this_weapon_result);
 <!DOCTYPE html>
 <html lang="en">
 
+<div id="header-container">
     <head>
         <title> ---SHOP NAME---</title>
         <meta charset="utf-8">
         <link rel='stylesheet' type='text/css' href='Stylesheet.css'>
     </head>
 
-    <!--<div class="grid-container"> -->
 
 <body>
-
-    <main>
-
-        <div class="grid-container">
-
-    <div class="grid-item-1">
 
     <header>
         SHOP NAME
@@ -48,14 +42,41 @@ $this_weapon_record = mysqli_fetch_assoc($this_weapon_result);
             </ul>
         </nav>
     </header>
-    </div>
 
-    <!--<main> -->
 
-        <!--<div class="grid-container"> -->
+       <main>
 
-    <div class="grid-item-2">
-    <!-- Search Weapons Form -->
+
+           <h2>Weapon Information</h2>
+
+           <?php
+
+           echo "<p> Age Requirement: " . $this_weapon_record['Age'] . "<br>";
+           echo "<p> Weapon: " . $this_weapon_record['Weapon_Name'] . "<br>";
+           echo "<p> Price: " . $this_weapon_record['Price'] . "<br>";
+           echo "<p> Handedness: " . $this_weapon_record['Type_ID'] . "<br>";
+           echo "<p> Stock: " . $this_weapon_record['Stock'] . "<br>";
+           ?>
+
+           <!--Food Box Form-->
+           <form name='weapon_box_form' id='weapon_box_form' method = 'get' action ='store.php'>
+               <select id ='weapon' name='weapon'>
+                   <!--options-->
+                   <?php
+                   while($all_weapons_record = mysqli_fetch_assoc($all_weapons_result)){
+                       echo "<option value = '" . $all_weapons_record['Weapon_ID'] . "'>";
+                       echo $all_weapons_record['Weapon_Name'];
+                       echo "</option>";
+                   }
+
+                   ?>
+               </select>
+
+               <input type='submit' name='weapon_button' value='Show me the weapon information'>
+           </form>
+
+
+           <!-- Search Weapons Form -->
     <h2>Search Weapons:</h2>
 
     <form action="" method="post">
@@ -84,9 +105,7 @@ $this_weapon_record = mysqli_fetch_assoc($this_weapon_result);
         mysqli_data_seek($query, 0);
     }
     ?>
-    </div>
 
-    <div class="grid-item-3">
     <!--Filter Weapons-->
 
     <h2>Filter Weapons</h2>
@@ -121,45 +140,10 @@ $this_weapon_record = mysqli_fetch_assoc($this_weapon_result);
         }
     }
     ?>
-    </div>
 
-    <div class="grid-item-4">
-
-        <h2>Weapon Information</h2>
-
-        <?php
-
-        echo "<p> Age Requirement: " . $this_weapon_record['Age'] . "<br>";
-        echo "<p> Weapon: " . $this_weapon_record['Weapon_Name'] . "<br>";
-        echo "<p> Price: " . $this_weapon_record['Price'] . "<br>";
-        echo "<p> Handedness: " . $this_weapon_record['Type_ID'] . "<br>";
-        echo "<p> Stock: " . $this_weapon_record['Stock'] . "<br>";
-        ?>
-
-        <!--Food Box Form-->
-        <form name='weapon_box_form' id='weapon_box_form' method = 'get' action ='store.php'>
-            <select id ='weapon' name='weapon'>
-                <!--options-->
-                <?php
-                while($all_weapons_record = mysqli_fetch_assoc($all_weapons_result)){
-                    echo "<option value = '" . $all_weapons_record['Weapon_ID'] . "'>";
-                    echo $all_weapons_record['Weapon_Name'];
-                    echo "</option>";
-                }
-
-                ?>
-            </select>
-
-            <input type='submit' name='weapon_button' value='Show me the weapon information'>
-        </form>
-        
-    </div>
-            <div class="grid-item-5">
-            <li> <a href='update_store.php'> UPDATE STORE </a> </li>
-            </div>
+           <li> <a href='update_store.php'> UPDATE STORE </a> </li></div>
 
 </div>
-
 </main>
 </body>
 </html>

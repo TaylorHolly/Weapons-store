@@ -2,6 +2,8 @@
 
 <html lang="en">
 
+<div id="header-container">
+
 <head>
     <title> --SHOP NAME--</title>
     <meta charset="utf-8">
@@ -21,7 +23,7 @@
 
 <main>
 
-    Log In Here
+    <p> Log In Here </p>
 
     <form name='login_form' id='login_form' method='post' action ='process_login.php'>
         <label for='username'>Username:</label>
@@ -33,6 +35,7 @@
         <input type='submit' name='submit' id='submit' value='Log In'>
     </form>
 
+</div>
 </main>
 </body>
 </html>
