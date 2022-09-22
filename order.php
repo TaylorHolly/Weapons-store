@@ -9,7 +9,7 @@ $all_weapons_result = mysqli_query($con, $all_weapons_query);
 ?>
 
 <head>
-    <title> ---SHOP NAME---</title>
+    <title> Weapons R Us</title>
     <meta charset="utf-8">
     <link rel='stylesheet' type='text/css' href='Stylesheet.css'>
 </head>
@@ -18,7 +18,7 @@ $all_weapons_result = mysqli_query($con, $all_weapons_query);
 <body>
 
 <header>
-    SHOP NAME
+    <h1>Weapons R Us</h1>
     <nav>
         <ul>
             <li> <a href='index.php'> HOME </a> </li>
@@ -53,18 +53,46 @@ $all_weapons_result = mysqli_query($con, $all_weapons_query);
 <?php
 $weapon = trim($_POST['order']);
 echo $weapon;
-?>
-
-<form name='user_form' id='user_form' method="post">
-
-</form>
-
-<?php
 
 $user = trim($_POST['username']);
 $pass= trim($_POST['password']);
 
-
 echo $user;
 echo $pass;
+
+//Log in queries and checking username and password
+
+$login_query = "SELECT password FROM customers WHERE Username ='".   $user."'";
+$login_result = mysqli_query($con, $login_query);
+$login_record = mysqli_fetch_assoc($login_result);
+
+$hash = $login_record['password'];
+$verify = password_verify($pass, $hash);
+if($verify) {
+$_SESSION['logged_in'] = 1;
+    echo "Logged In";
+}
+else{
+    echo "Incorrect Username or Password";
+}
+
+//Customer Queries
+
+$customer_query = "SELECT Customer_ID FROM customers WHERE USERNAME ='". $user."'";
+$customer_result = mysqli_query($con, $customer_query);
+$customer_record = mysqli_fetch_assoc($customer_result);
+
+$customer = $customer_record['Customer_ID'];
+
+$order = "INSERT INTO orders (Customer_ID, Weapon_ID) VALUES ('$customer', '$weapon')";
+
+//Check order has been added
+
+if(!mysqli_query($con, $order)) {
+    echo 'Order Failed';
+} else {
+    echo 'Order Successful';
+}
+
 ?>
+

@@ -23,7 +23,7 @@ $this_weapon_record = mysqli_fetch_assoc($this_weapon_result);
 
 <div id="header-container">
     <head>
-        <title> ---SHOP NAME---</title>
+        <title> Weapons R Us</title>
         <meta charset="utf-8">
         <link rel='stylesheet' type='text/css' href='Stylesheet.css'>
     </head>
@@ -32,7 +32,7 @@ $this_weapon_record = mysqli_fetch_assoc($this_weapon_result);
 <body>
 
     <header>
-        SHOP NAME
+        <h1>Weapons R Us</h1>
         <nav>
             <ul>
                 <li> <a href='index.php'> HOME </a> </li>
@@ -75,6 +75,7 @@ $this_weapon_record = mysqli_fetch_assoc($this_weapon_result);
                <input type='submit' name='weapon_button' value='Show me the weapon information'>
            </form>
 
+           <li> <a href='order.php'> Order </a> </li>
 
            <!-- Search Weapons Form -->
     <h2>Search Weapons:</h2>

@@ -5,14 +5,14 @@
 <div id="header-container">
 
 <head>
-    <title> --SHOP NAME--</title>
+    <title> Weapons R Us</title>
     <meta charset="utf-8">
     <link rel='stylesheet' type='text/css' href='Stylesheet.css'>
 </head>
 
 <body>
 <header>
-    --SHOP NAME--
+    <p>Weapons R Us</p>
     <nav>
         <ul>
             <li> <a href='index.php'> HOME </a> </li>
