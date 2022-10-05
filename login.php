@@ -12,7 +12,7 @@
 
 <body>
 <header>
-    <p>Weapons R Us</p>
+    <h1>Weapons R Us</h1>
     <nav>
         <ul>
             <li> <a href='index.php'> HOME </a> </li>

@@ -16,6 +16,8 @@ if(isset($_GET['weapon'])){
 $this_weapon_query = "SELECT Weapon_Name, Price, Age, Stock, Type_ID FROM weapons WHERE Weapon_ID = '" .$id ."'";
 $this_weapon_result = mysqli_query($con, $this_weapon_query);
 $this_weapon_record = mysqli_fetch_assoc($this_weapon_result);
+
+$filter = 'NF';
 ?>
 
 <!DOCTYPE html>
@@ -41,6 +43,9 @@ $this_weapon_record = mysqli_fetch_assoc($this_weapon_result);
                 <li> <a href='logout.php'> LOG-OUT </a> </li>
             </ul>
         </nav>
+
+        <h2><img src=logo.png alt="Weapons R Us Logo" title="Weapons R Us Logo" width='350px' height='250px'></h2>
+
     </header>
 
 
@@ -51,8 +56,8 @@ $this_weapon_record = mysqli_fetch_assoc($this_weapon_result);
 
            <?php
 
-           echo "<p> Age Requirement: " . $this_weapon_record['Age'] . "<br>";
            echo "<p> Weapon: " . $this_weapon_record['Weapon_Name'] . "<br>";
+           echo "<p> Age Requirement: " . $this_weapon_record['Age'] . "<br>";
            echo "<p> Price: " . $this_weapon_record['Price'] . "<br>";
            echo "<p> Handedness: " . $this_weapon_record['Type_ID'] . "<br>";
            echo "<p> Stock: " . $this_weapon_record['Stock'] . "<br>";
@@ -120,26 +125,29 @@ $this_weapon_record = mysqli_fetch_assoc($this_weapon_result);
     </form>
 
     <?php
-    $count = 0;
-    if(isset($_POST['filter_options'])) {
-        echo "hi";
-        $filter = $_POST['filter_options'];
 
+    $filter = $_POST['filter_options'];
+
+    if($filter == 'LtH') {
+
+        $count = 0;
         $query2 = "SELECT Weapon_Name, Price FROM weapons ORDER BY Price ASC";
         $LtH_query = mysqli_query($con, $query2);
         $count = mysqli_num_rows($LtH_query);
 
         if ($count > 0) {
 
-
-            echo $count;
             while ($row = mysqli_fetch_array($LtH_query)) {
-                echo "<p>", $row ['Weapon_Name'];
-                echo "<p>", $row ['Price'];
+                echo "<p>Weapon: ", $row ['Weapon_Name'];
+                echo "<p>Price: ", $row ['Price'];
                 echo "<br>";
             }
         }
+
+    } else {
+        echo "<br>";
     }
+
     ?>
 
            <li> <a href='update_store.php'> UPDATE STORE </a> </li></div>

@@ -3,6 +3,10 @@ session_start();
 $con = mysqli_connect("localhost", "taylorho", "wildbean44", "taylorho_weapon");
 include 'connection.php';
 
+if((!isset($_SESSION['logged_in'])) or $_SESSION['logged_in'] !=1){
+    header("Location: error_page.php");
+}
+
 $all_weapons_query = "SELECT Weapon_ID, Weapon_Name FROM weapons";
 $all_weapons_result = mysqli_query($con, $all_weapons_query);
 
@@ -31,6 +35,12 @@ $all_weapons_result = mysqli_query($con, $all_weapons_query);
 
 
 <form name='order_form' id='order_form' method="post">
+    <br> <label for='username'>Username: </label>
+    <input type='text' name='username'> <br>
+
+    <label for='password'>Password: </label>
+    <input type='password' name='password'> <br>
+
     <select name="order" name="order">
         <?php
         while($all_weapons_record = mysqli_fetch_assoc($all_weapons_result)){
@@ -41,24 +51,15 @@ $all_weapons_result = mysqli_query($con, $all_weapons_query);
         ?>
     </select>
 
-    <br> <label for='username'>Username: </label>
-    <input type='text' name='username'> <br>
-
-    <label for='password'>Password: </label>
-    <input type='password' name='password'> <br>
-
     <input type="submit" name="submit" value="Order">
 </form>
 
 <?php
 $weapon = trim($_POST['order']);
-echo $weapon;
+
 
 $user = trim($_POST['username']);
 $pass= trim($_POST['password']);
-
-echo $user;
-echo $pass;
 
 //Log in queries and checking username and password
 
@@ -70,10 +71,10 @@ $hash = $login_record['password'];
 $verify = password_verify($pass, $hash);
 if($verify) {
 $_SESSION['logged_in'] = 1;
-    echo "Logged In";
+    echo "<br>";
 }
 else{
-    echo "Incorrect Username or Password";
+    echo "<p> Incorrect Username or Password </p>";
 }
 
 //Customer Queries
@@ -89,9 +90,9 @@ $order = "INSERT INTO orders (Customer_ID, Weapon_ID) VALUES ('$customer', '$wea
 //Check order has been added
 
 if(!mysqli_query($con, $order)) {
-    echo 'Order Failed';
+    echo '<p> Order Failed </p>';
 } else {
-    echo 'Order Successful';
+    echo '<p> Order Successful </p>';
 }
 
 ?>
