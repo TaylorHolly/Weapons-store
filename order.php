@@ -3,7 +3,7 @@ session_start();
 $con = mysqli_connect("localhost", "taylorho", "wildbean44", "taylorho_weapon");
 include 'connection.php';
 
-/* Checks the user is logged in */
+/* Checks if the user is logged in */
 if((!isset($_SESSION['logged_in'])) or $_SESSION['logged_in'] !=1){
     header("Location: error_page.php");
 }
