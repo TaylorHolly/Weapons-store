@@ -3,7 +3,6 @@ $con = mysqli_connect("localhost", "taylorho", "wildbean44", "taylorho_weapon");
 include 'connection.php';
 
 /*Queries*/
-
 $all_weapons_query = "SELECT Weapon_ID, Weapon_Name, Age FROM weapons";
 $all_weapons_result = mysqli_query($con, $all_weapons_query);
 
@@ -23,16 +22,14 @@ $filter = 'NF';
 <!DOCTYPE html>
 <html lang="en">
 
-<div id="header-container">
     <head>
         <title> Weapons R Us</title>
         <meta charset="utf-8">
         <link rel='stylesheet' type='text/css' href='Stylesheet.css'>
     </head>
 
-
 <body>
-
+<div id="header-container">
     <header>
         <h1>Weapons R Us</h1>
         <nav>
@@ -44,14 +41,12 @@ $filter = 'NF';
             </ul>
         </nav>
 
-        <h2><img src=logo.png alt="Weapons R Us Logo" title="Weapons R Us Logo" width='350px' height='250px'></h2>
-
+        <!-- Logo -->
+        <h2><img src=logo.png alt="Weapons R Us Logo" title="Weapons R Us Logo" width='350' height='250'></h2>
     </header>
 
-
        <main>
-
-
+           <!-- Weapon drop-down box -->
            <h2>Weapon Information</h2>
 
            <?php
@@ -73,19 +68,18 @@ $filter = 'NF';
                        echo $all_weapons_record['Weapon_Name'];
                        echo "</option>";
                    }
-
                    ?>
                </select>
-
                <input type='submit' name='weapon_button' value='Show me the weapon information'>
            </form>
 
-           <li> <a href='order.php'> Order </a> </li>
+           <!-- Order Link -->
+           <a href='order.php'> <p> Order </p> </a>
 
            <!-- Search Weapons Form -->
     <h2>Search Weapons:</h2>
 
-    <form action="" method="post">
+    <form action="store.php" method="post">
         <input type="text" name='search'>
         <input type="submit" name="submit" value="search">
     </form>
@@ -116,10 +110,11 @@ $filter = 'NF';
 
     <h2>Filter Weapons</h2>
 
-    <form action="" method="post">
+    <form action="store.php" method="post">
         <select name="filter_options">
             <option value="NF">No Filter</option>
             <option value="LtH">Price: Low to High</option>
+        </select>
 
         <input type="submit" name="submit" value="Submit">
     </form>
@@ -147,12 +142,12 @@ $filter = 'NF';
     } else {
         echo "<br>";
     }
-
     ?>
 
-           <li> <a href='update_store.php'> UPDATE STORE </a> </li></div>
-
-</div>
+           <!-- Update store link -->
+           <a href='update_store.php'> <p> UPDATE STORE </p> </a>
+           <br>
 </main>
+</div>
 </body>
 </html>

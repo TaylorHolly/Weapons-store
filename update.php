@@ -11,3 +11,4 @@ if(!mysqli_query($con, $update_weapon)) {
 }
 
 header("refresh:2; url=store.php");
+?>

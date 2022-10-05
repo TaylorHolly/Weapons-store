@@ -1,8 +1,5 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
-<div id="header-container">
 
 <head>
     <title> Weapons R Us</title>
@@ -11,6 +8,7 @@
 </head>
 
 <body>
+<div id="header-container">
 <header>
     <h1>Weapons R Us</h1>
     <nav>
@@ -23,19 +21,20 @@
 
 <main>
 
+    <!-- Log In form -->
     <p> Log In Here </p>
 
     <form name='login_form' id='login_form' method='post' action ='process_login.php'>
         <label for='username'>Username:</label>
-        <input type='text' name='username'> <br>
+        <input id='username' type='text' name='username'> <br>
 
         <label for='password'>Password: </label>
-        <input type='password' name='password'> <br>
+        <input id='password' type='password' name='password'> <br>
 
         <input type='submit' name='submit' id='submit' value='Log In'>
     </form>
 
-</div>
 </main>
+</div>
 </body>
 </html>

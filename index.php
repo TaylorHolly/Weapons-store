@@ -4,10 +4,8 @@ include 'connection.php';
 ?>
 
 <!DOCTYPE html>
-
 <html lang="en">
 
-<div id="header-container">
     <head>
         <title> Weapons R Us</title>
         <meta charset="utf-8">
@@ -15,6 +13,7 @@ include 'connection.php';
     </head>
 
 <body>
+<div id="header-container">
     <header>
         <h1>Weapons R Us</h1>
         <nav>
@@ -25,17 +24,13 @@ include 'connection.php';
                 <li> <a href='logout.php'> LOG-OUT </a> </li>
             </ul>
         </nav>
-
-        <h2><img src=logo.png alt="Weapons R Us Logo" title="Weapons R Us Logo" width='350px' height='250px'></h2>
-
+        <h2><img src=logo.png alt="Weapons R Us Logo" title="Weapons R Us Logo" width='350' height='250'></h2>
     </header>
-
 <main>
-
     <p>At Weapons R Us, you can rest easy knowing that all our products are sourced sustainably.</p>
     <br>
 
-</div>
 </main>
+</div>
 </body>
 </html>

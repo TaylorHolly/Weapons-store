@@ -7,38 +7,43 @@ if((!isset($_SESSION['logged_in'])) or $_SESSION['logged_in'] !=1){
     header("Location: error_page.php");
 }
 
-
 $update_store = "SELECT * FROM weapons";
 $update_store_record = mysqli_query($con, $update_store);
-
 ?>
 
-<!-- Adding an insert into the database -->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title> Weapons R Us</title>
+        <meta charset="utf-8">
+        <link rel='stylesheet' type='text/css' href='Stylesheet.css'>
+    </head>
 
+<!-- Insert into the database -->
 <p> Add Weapon </p>
 <form action="insert.php" method="post">
     <label for="weapon">Weapon Name: </label> <br>
     <input type="text" id = "weapon" name="weapon"> <br>
 
     <label for="type_id">Type ID: </label> <br>
-    <input type="radio" name="ID" value="TH"> Two Handed<br/>
-    <input type="radio" name="ID" value="OH"> One Handed<br/>
+    <input type="radio" name="ID" value="TH"> Two Handed<br>
+    <input type="radio" name="ID" value="OH"> One Handed<br>
 
     <label for="age">Age: </label> <br>
-    <input type="radio" name="Age" value="18+"> Over 18<br/>
-    <input type="radio" name="Age" value="-18"> Under 18<br/>
+    <input type="radio" name="Age" value="18+"> Over 18<br>
+    <input type="radio" name="Age" value="-18"> Under 18<br>
 
     <label for="stock">Stock: </label> <br>
-    <input type="radio" name="Stock" value="Yes"> In stock<br/>
-    <input type="radio" name="Stock" value="No"> Out of stock<br/>
+    <input type="radio" name="Stock" value="Yes"> In stock<br>
+    <input type="radio" name="Stock" value="No"> Out of stock<br>
 
     <label for="price">Price: </label> <br>
-    <input type="text" id="price" name="price"> <br/>
+    <input type="text" id="price" name="price"> <br>
 
     <input type="submit" value="Submit">
 </form>
 
-<!-- Update items in the database -->
+<!-- Update and delete items in the database -->
 <table>
     <tr>
         <th>Weapon Name: </th>
@@ -64,3 +69,4 @@ $update_store_record = mysqli_query($con, $update_store);
     }
     ?>
 </table>
+</html>

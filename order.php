@@ -3,6 +3,7 @@ session_start();
 $con = mysqli_connect("localhost", "taylorho", "wildbean44", "taylorho_weapon");
 include 'connection.php';
 
+/* Checks the user is logged in */
 if((!isset($_SESSION['logged_in'])) or $_SESSION['logged_in'] !=1){
     header("Location: error_page.php");
 }
@@ -11,6 +12,8 @@ $all_weapons_query = "SELECT Weapon_ID, Weapon_Name FROM weapons";
 $all_weapons_result = mysqli_query($con, $all_weapons_query);
 
 ?>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
     <title> Weapons R Us</title>
@@ -18,9 +21,7 @@ $all_weapons_result = mysqli_query($con, $all_weapons_query);
     <link rel='stylesheet' type='text/css' href='Stylesheet.css'>
 </head>
 
-
 <body>
-
 <header>
     <h1>Weapons R Us</h1>
     <nav>
@@ -33,15 +34,15 @@ $all_weapons_result = mysqli_query($con, $all_weapons_query);
     </nav>
 </header>
 
-
+<!-- Order Form -->
 <form name='order_form' id='order_form' method="post">
     <br> <label for='username'>Username: </label>
-    <input type='text' name='username'> <br>
+    <input id='username' type='text' name='username'> <br>
 
     <label for='password'>Password: </label>
-    <input type='password' name='password'> <br>
+    <input id='password' type='password' name='password'> <br>
 
-    <select name="order" name="order">
+    <select name="order">
         <?php
         while($all_weapons_record = mysqli_fetch_assoc($all_weapons_result)){
             echo "<option value = '" . $all_weapons_record['Weapon_ID'] . "'>";
@@ -53,6 +54,8 @@ $all_weapons_result = mysqli_query($con, $all_weapons_query);
 
     <input type="submit" name="submit" value="Order">
 </form>
+</body>
+</html>
 
 <?php
 $weapon = trim($_POST['order']);
