@@ -9,7 +9,7 @@ $all_weapons_result = mysqli_query($con, $all_weapons_query);
 if(isset($_GET['weapon'])){
     $id = $_GET['weapon'];
 }else{
-    $id = 'AXE';
+    $id = '1';
 }
 
 $this_weapon_query = "SELECT Weapon_Name, Price, Age, Stock, Type_ID FROM weapons WHERE Weapon_ID = '" .$id ."'";
